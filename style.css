@@ -146,6 +146,28 @@ nav a:hover {
   font-size: 1.2rem;
 }
 
+.btn-cv {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.9rem 2rem;
+  background-color: #ffb380;
+  color: #0f1620;
+  border: 2px solid #ffb380;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(255, 179, 128, 0.2);
+}
+
+.btn-cv:hover {
+  background-color: transparent;
+  color: #ffb380;
+  box-shadow: 0 0 20px rgba(255, 179, 128, 0.4);
+  transform: translateY(-3px);
+}
+
 /* Responsive veličina ikone */
 @media (max-width: 768px) {
   .wave-hand {
@@ -458,6 +480,12 @@ footer {
     display: block; /* Bachelor ide ispod Frontend */
   }
 
+  .btn-cv {
+    padding: 0.8rem 1.8rem;
+    font-size: 1rem;
+    margin-top: 1.5rem;
+  }
+
   header nav {
     display: none;
     flex-direction: column;
@@ -514,6 +542,12 @@ footer {
 @media (max-width: 480px) {
   .hero h1 {
     font-size: 2rem;
+  }
+
+  .btn-cv {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.95rem;
+    margin-top: 1.2rem;
   }
 
   .cards-container {
