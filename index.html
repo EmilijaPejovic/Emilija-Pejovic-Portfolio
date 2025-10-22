@@ -17,31 +17,38 @@
   <body>
     <!-- ====== Header ====== -->
     <header>
-        <div class="header-left">
-          <img src="images/ema-profile.jpg" alt="Emilija Pejovic" class="profile-pic">
-          <h1>Emilija Pejovic</h1>
-        </div>
-        <nav>
-          <a href="#about">About me</a>
-          <a href="#projects">Projects</a>
-          <a href="#skills">Skills</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </header>
+      <div class="header-left">
+        <img src="images/ema-profile.jpg" alt="Emilija Pejovic" class="profile-pic">
+        <h1>Emilija Pejovic</h1>
+      </div>
+
+      <!-- Hamburger dugme -->
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- Navigacija -->
+      <nav id="navMenu">
+        <a href="#about">About me</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
 
     <!-- ====== Hero ====== -->
     <section class="hero" id="home">
-        <h1>Hi, I am Emilija </h1>
-        <p>Junior Frontend & Android Developer | Bachelor of Computer Science </p>
-      </section>      
+      <h1>Hi, I am Emilija </h1>
+      <p>Junior Frontend & Android Developer | Bachelor of Computer Science </p>
+    </section>      
 
     <!-- ====== About ====== -->
     <section class="about" id="about">
       <h3>About me</h3>
       <p>
         With a background in Computer Science, I’m passionate about programming and always eager to grow and improve. <br><br>
-I enjoy working in creative environments where technology meets innovation and ideas turn into meaningful digital experiences.<br><br>
-My experience includes Frontend, Java, and Android development, with a focus on building clean and intuitive user-centered solutions.<br><br>
+        I enjoy working in creative environments where technology meets innovation and ideas turn into meaningful digital experiences.<br><br>
+        My experience includes Frontend, Java, and Android development, with a focus on building clean and intuitive user-centered solutions.<br><br>
       </p>
     </section>
 
@@ -53,44 +60,45 @@ My experience includes Frontend, Java, and Android development, with a focus on 
       </div>
     </section>
 
+    <!-- ====== Skills ====== -->
     <section class="skills" id="skills">
-        <h3>Skills</h3>
-      
-        <div class="skills-category">
-          <h4>Technical Skills</h4>
-          <ul>
-            <li>Java</li>
-            <li>Android SDK</li>
-            <li>Angular</li>
-            <li>TypeScript</li>
-            <li>HTML5</li>
-            <li>CSS3</li>
-            <li>JavaScript</li>
-            <li>OOP</li>
-            <li>SEO</li>
-          </ul>
-        </div>
-      
-        <div class="skills-category">
-          <h4>Soft Skills</h4>
-          <ul>
-            <li>Problem Solving</li>
-            <li>Teamwork</li>
-            <li>Creativity</li>
-            <li>Communication</li>
-            <li>Adaptability</li>
-          </ul>
-        </div>
-      
-        <div class="skills-category">
-          <h4>Languages</h4>
-          <ul>
-            <li>English (B2)</li>
-            <li>Serbian (Native)</li>
-            <li>French (A1)</li>
-          </ul>
-        </div>
-      </section>
+      <h3>Skills</h3>
+    
+      <div class="skills-category">
+        <h4>Technical Skills</h4>
+        <ul>
+          <li>Java</li>
+          <li>Android SDK</li>
+          <li>Angular</li>
+          <li>TypeScript</li>
+          <li>HTML5</li>
+          <li>CSS3</li>
+          <li>JavaScript</li>
+          <li>OOP</li>
+          <li>SEO</li>
+        </ul>
+      </div>
+    
+      <div class="skills-category">
+        <h4>Soft Skills</h4>
+        <ul>
+          <li>Problem Solving</li>
+          <li>Teamwork</li>
+          <li>Creativity</li>
+          <li>Communication</li>
+          <li>Adaptability</li>
+        </ul>
+      </div>
+    
+      <div class="skills-category">
+        <h4>Languages</h4>
+        <ul>
+          <li>English (B2)</li>
+          <li>Serbian (Native)</li>
+          <li>French (A1)</li>
+        </ul>
+      </div>
+    </section>
       
     <!-- ====== Contact ====== -->
     <section class="contact" id="contact">
@@ -106,7 +114,5 @@ My experience includes Frontend, Java, and Android development, with a focus on 
     <footer>
       <p>&copy; <span id="year"></span> Emilija Pejovic. All rights reserved.</p>
     </footer>
-
-    <script src="script.js"></script>
   </body>
 </html>
