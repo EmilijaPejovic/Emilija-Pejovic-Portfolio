@@ -296,10 +296,12 @@ footer {
     text-align: right;
     padding: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 0 0 0 10px;
   }
 
   nav.active {
     display: flex;
+    animation: fadeIn 0.3s ease;
   }
 
   nav a {
@@ -318,4 +320,13 @@ footer {
   section {
     padding: 3rem 7%;
   }
+}
+
+/* ====== Hamburger Animation Fix ====== */
+nav {
+  transition: all 0.3s ease;
+}
+
+.menu-toggle i {
+  transition: transform 0.3s ease;
 }

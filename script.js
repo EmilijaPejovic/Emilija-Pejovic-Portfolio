@@ -53,14 +53,15 @@ menuButton.addEventListener("click", () => {
   nav.classList.toggle("active");
   const icon = menuButton.querySelector("i");
   icon.classList.toggle("fa-bars");
-  icon.classList.toggle("fa-xmark"); // menja u "X"
+  icon.classList.toggle("fa-xmark");
 });
 
-// Automatsko zatvaranje menija kada se klikne link
+// Zatvori meni kad se klikne na link
 nav.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", () => {
     nav.classList.remove("active");
-    menuButton.querySelector("i").classList.add("fa-bars");
-    menuButton.querySelector("i").classList.remove("fa-xmark");
+    const icon = menuButton.querySelector("i");
+    icon.classList.add("fa-bars");
+    icon.classList.remove("fa-xmark");
   });
 });
