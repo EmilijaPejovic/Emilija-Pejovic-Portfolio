@@ -330,3 +330,59 @@ nav {
 .menu-toggle i {
   transition: transform 0.3s ease;
 }
+
+/* ====== Hamburger Fix & Color Adjustments ====== */
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  font-size: 2rem;
+  color: #ffb380; /* narandžasta kao tvoj akcenat */
+  position: absolute;
+  top: 22px;
+  right: 25px;
+  z-index: 1001;
+  transition: transform 0.3s ease;
+}
+
+.menu-toggle i {
+  color: #ffb380; /* narandžasta i za ikonicu */
+}
+
+.menu-toggle:hover {
+  transform: scale(1.1);
+  color: #ff9a66;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  header nav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 75px;
+    right: 0;
+    width: 100%;
+    background: rgba(21, 31, 43, 0.97);
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+  }
+
+  header nav.active {
+    display: flex;
+  }
+
+  header nav a {
+    display: block;
+    padding: 1rem;
+    color: #d9cfc4;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  header nav a:hover {
+    color: #ffb380;
+  }
+}

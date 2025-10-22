@@ -43,20 +43,26 @@ document.getElementById("year").textContent = new Date().getFullYear();
 // ====== Responsive Navigation ======
 const header = document.querySelector("header");
 const nav = header.querySelector("nav");
-const menuButton = document.createElement("div");
 
-menuButton.classList.add("menu-toggle");
-menuButton.innerHTML = '<i class="fas fa-bars"></i>';
-header.insertBefore(menuButton, nav);
+// Ako hamburger već ne postoji — napravi ga
+let menuButton = header.querySelector(".menu-toggle");
+if (!menuButton) {
+  menuButton = document.createElement("div");
+  menuButton.classList.add("menu-toggle");
+  menuButton.innerHTML = '<i class="fas fa-bars"></i>';
+  header.insertBefore(menuButton, nav);
+}
 
+// Klikom na hamburger menja se meni i ikonica
 menuButton.addEventListener("click", () => {
   nav.classList.toggle("active");
   const icon = menuButton.querySelector("i");
   icon.classList.toggle("fa-bars");
   icon.classList.toggle("fa-xmark");
+  icon.style.color = "#ffb380"; // ostaje narandžasta i za X
 });
 
-// Zatvori meni kad se klikne na link
+// Kad se klikne na link — zatvara meni
 nav.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", () => {
     nav.classList.remove("active");
