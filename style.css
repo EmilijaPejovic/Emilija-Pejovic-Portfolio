@@ -23,6 +23,7 @@ header img.profile-pic {
   box-shadow: 0 0 10px rgba(255, 179, 128, 0.4);
   margin-right: 15px;
   transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
 header img.profile-pic:hover {

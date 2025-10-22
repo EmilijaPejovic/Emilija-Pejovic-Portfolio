@@ -60,3 +60,15 @@ nav.querySelectorAll("a").forEach((link) => {
     icon.classList.remove("fa-xmark");
   });
 });
+
+// ====== Scroll to top when clicking profile picture ======
+const profilePic = document.querySelector(".profile-pic");
+
+if (profilePic) {
+  profilePic.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+}
