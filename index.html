@@ -1,39 +1,45 @@
 <!DOCTYPE html>
-<html lang="sr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Emilija Pejovic Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
-    <link rel="icon" type="image/png" href="images/favicon-32x32.png">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <title>Emilija Pejovic | Frontend & Android Developer</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link rel="icon" type="image/png" href="images/favicon-512x512.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
     <script defer src="script.js"></script>
-    <script
-      src="https://kit.fontawesome.com/4e3b77b05f.js"
-      crossorigin="anonymous"
-    ></script>
   </head>
 
   <body>
     <!-- ====== Header ====== -->
     <header>
       <div class="header-left">
-        <img src="images/ema-profile.jpg" alt="Emilija Pejovic" class="profile-pic">
-        <h1>Emilija Pejovic</h1>
+        <img src="images/ema-profile.jpg" alt="Emilija Pejovic" class="profile-pic" />
+
+        <div class="header-left-text">
+          <h1>Emilija Pejovic</h1>
+          <p class="header-role">Frontend & Android Developer</p>
+        </div>
       </div>
 
-      <!-- Hamburger dugme -->
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
         <i class="fas fa-bars"></i>
       </button>
 
-      <!-- Navigacija -->
       <nav id="navMenu">
-        <a href="#experience">Experience</a>
-        <a href="#about">About me</a>
+        <a href="#home">Home</a>
         <a href="#projects">Projects</a>
+        <a href="#featured">Featured</a>
+        <a href="#background">Background</a>
+        <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -41,128 +47,262 @@
 
     <!-- ====== Hero ====== -->
     <section class="hero" id="home">
-      <h1>Hi, I’m Emilija <i class="fa-regular fa-hand fa-wave-hand"></i></h1>
-      <p>Junior Frontend & Android Developer | <span>Bachelor of Computer Science</span> </p>
-      <a href="files/CV_Emilija_Pejovic.pdf" download class="btn-cv">Download My CV</a>
-    </section>      
+      <h1>
+      <span class="text-accent-blue">Frontend & Android developer</span> <br>
+      focused on building clean, scalable digital products
+      </h1>
 
-  <!-- ====== Education & Work Experience ====== -->
-  <section class="edu-work" id="experience">
-  <h3>Education & Work Experience</h3>
-
-  <div class="cards-container">
-    <!-- Education Card -->
-    <div class="card education">
-      <h4>🎓 Education</h4>
-      <p class="edu-work-title">Bachelor of Computer Science</p>
-      <p>Singidunum University, <br> Faculty of Informatics and Computing</p>
-      <p class="location">Belgrade, Serbia</p>
-      <p class="year">2019 – 2025</p>
-      <div class="edu-details">
-        <p class="thesis">Thesis:</p> 
-        <p>Zenlorien - Android Application for maintaining mental health</p>
-      </div>
-    </div>
-
-    <!-- Work Experience Card -->
-    <div class="card work">
-      <h4>💼 Work Experience</h4>
-
-      <div class="job">
-        <p class="edu-work-title">Web Developer</p>
-        <p>Data Science Conference</p>
-        <p class="location">Belgrade, Serbia</p>
-        <p class="year">2024 – 2025</p>
-      </div>
-
-      <div class="job">
-        <p class="edu-work-title">Ecosystem Partnerships Manager</p>
-        <p>Data Science Conference</p>
-        <p class="location">Belgrade, Serbia</p>
-        <p class="year">2022 – 2023</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-    <!-- ====== About ====== -->
-    <section class="about" id="about">
-      <h3>About me</h3>
-      <p>
-       I’ve always been fascinated by how technology can turn ideas into something real. That curiosity led me to study <span class="highlight">Computer Science</span> — a field that combines creativity, logic, and problem-solving in the most inspiring way. <br>
-
-        During my studies, I created several academic projects and gained experience in <span class="highlight">Frontend, Java, and Android development</span>. <br><br>
-        My journey with the <span class="highlight">Data Science Conference</span> began in 2021 as a volunteer, where I actively contributed to event organization and community engagement. Following this experience, I became an <span class="highlight">Ecosystem Partnerships Manager</span>, developing strong communication and organizational skills through collaboration with partners and coordination of online technical tutorials. Later, I transitioned into a <span class="highlight">Web Developer</span> role, focusing on maintaining and enhancing official websites to ensure a clean, intuitive, and user-friendly design. <br><br>
-
-        I received a <span class="highlight">scholarship</span> for academic excellence, was part of the <span class="highlight">Advanced Student Group</span>, and today I’m an active member of the <span class="highlight">Alumni Association of Singidunum University</span>, connecting with professionals worldwide. <br><br>
-        I love learning, teamwork, and new challenges — they keep me growing and motivated to create meaningful digital experiences.
+      <p class="hero-description">
+      I create <span class="text-accent">responsive web and mobile experiences</span> with strong attention to structure, usability, and implementation quality. <br><br>
+      Currently working on an <span class="text-accent-blue">e-commerce platform</span> and refining product-focused development skills.
       </p>
+
+      <p class="hero-meta">
+        Open to internships & junior roles
+      </p>
+
+      <div class="hero-actions">
+        <a href="cv.pdf" class="btn-cv">Download CV</a>
+        <a href="#projects" class="btn-secondary">View Projects</a>
+      </div>
     </section>
 
     <!-- ====== Projects ====== -->
     <section class="projects" id="projects">
-      <h3>Projects</h3>
-      <div class="project-grid" id="projectGrid">
-        <!-- Projekti će biti ubačeni iz script.js -->
+      <h3><span class="text-accent">Selected Projects</span></h3>
+      <p class="section-intro">
+        A selection of academic and practical work covering frontend, Android, and product-oriented development with a focus on usability and real-world application.
+      </p>
+
+      <div class="project-grid project-grid-featured" id="featuredProjectsGrid"></div>
+      <div class="project-grid project-grid-secondary" id="secondaryProjectsGrid"></div>
+    </section>
+
+    <!-- ====== Featured ====== -->
+    <section class="featured-project" id="featured">
+      <h3><span class="text-accent-blue">Featured Project</span></h3>
+
+      <div class="featured-card">
+        <div class="featured-label">Current Work</div>
+        <h4>Eagle Shop — <span class="text-accent">E-commerce Frontend</span> </h4>
+
+        <p>
+        Building a <span class="text-accent-blue">real-world e-commerce platform</span> with a strong emphasis on structured frontend architecture, responsive behavior, and a clean shopping experience.
+        </p>
+
+        <p class="featured-impact">
+        Designed and developed as a <span class="text-accent">real e-commerce frontend</span> for a professional uniforms business.
+        </p>
+
+        <div class="featured-divider"></div>
+
+        <div class="featured-points">
+          <span>Responsive architecture</span>
+          <span>Scalable frontend structure</span>
+          <span>Polished product presentation</span>
+          <span>Cart and checkout UX</span>
+          <span>Design system consistency</span>
+          <span>Future-ready API / database integration</span>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- ====== Background ====== -->
+    <section class="background" id="background">
+      <h3><span class="text-accent">Background</span></h3>
+      <p class="section-intro">
+        A quick overview of my academic background and professional experience.
+      </p>
+
+      <div class="background-grid">
+        <article class="background-card">
+          <span class="background-label">Education</span>
+          <h4><span class="text-accent">Bachelor of Computer Science</span></h4>
+          <p class="background-meta">
+            Singidunum University · Belgrade, Serbia
+          </p>
+          <p class="background-meta">2019 – 2025</p>
+          <p>
+            Completed a Computer Science degree with a strong focus on software
+            development, frontend technologies, and Android application development.
+          </p>
+
+          <div class="background-divider"></div>
+
+          <p class="background-highlight">
+            Thesis project: <strong><span class="text-accent-blue">Zenlorien - Android application for maintaining mental health</span></strong>
+          </p>
+          
+          <p class="background-subtext">
+            Designed to support mental well-being through guided
+            psychotherapeutic exercises provided by a licenced psychoterapist.
+          </p> 
+
+          <p class="background-meta"><span class="text-accent-blue">Grade: 9.75 / 10</span></p>
+        </article>
+
+        <article class="background-card">
+          <span class="background-label">Experience</span>
+          <h4><span class="text-accent">Web Developer</span></h4>
+          <p class="background-meta">
+            Data Science Conference · Belgrade, Serbia
+          </p>
+          <p class="background-meta">2024 – 2025</p>
+          <p>
+            Contributed to web-related work with focus on structure, usability,
+            presentation quality, and clear digital communication.
+          </p>
+
+          <div class="background-divider"></div>
+
+          <h4><span class="text-accent">Ecosystem Partnerships Manager</span></h4>
+          <p class="background-meta">
+            Data Science Conference · Belgrade, Serbia
+          </p>
+          <p class="background-meta">2022 – 2023</p>
+          <p>
+            Worked on partnerships, communication, and collaboration across teams,
+            strengthening organizational and cross-functional coordination skills.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ====== About ====== -->
+    <section class="about" id="about">
+      <h3><span class="text-accent">About / What I Bring</span></h3>
+
+      <div class="about-card">
+        <p class="section-intro">
+          These projects reflect my approach to building digital products, with a focus on creating <span class="text-accent-blue">structured, user-friendly interfaces</span> that are intuitive, reliable, and practical to use.
+        </p>
+
+        <p>
+          My work combines <span class="text-accent-blue">frontend and Android development</span>, where I turn ideas into clear, functional interfaces with well-defined interaction patterns and consistent implementation.
+        </p>
+
+        <p>
+          I’m especially interested in <span class="text-accent-blue">product-oriented development</span> — creating experiences that feel natural to use, solve real problems, and deliver a smooth, coherent user experience.
+        </p>
       </div>
     </section>
 
     <!-- ====== Skills ====== -->
     <section class="skills" id="skills">
-      <h3>Skills</h3>
-    
+      <h3><span class="text-accent-blue">Skills / Tools</span></h3>
+
       <div class="skills-category">
-        <h4>Technical Skills</h4>
+        <h4><span class="text-accent">Frontend & Development</span></h4>
         <ul>
-          <li>Java</li>
-          <li>Android SDK</li>
-          <li>Angular</li>
-          <li>TypeScript</li>
           <li>HTML5</li>
           <li>CSS3</li>
           <li>JavaScript</li>
+          <li>TypeScript</li>
+          <li>Angular</li>
+          <li>Java</li>
           <li>OOP</li>
-          <li>SEO</li>
+          <li>Android SDK</li>
+          <li>REST APIs</li>
         </ul>
       </div>
-    
+
       <div class="skills-category">
-        <h4>Soft Skills</h4>
+        <h4><span class="text-accent">Workflow & Tools</span></h4>
         <ul>
-          <li>Problem Solving</li>
-          <li>Teamwork</li>
-          <li>Creativity</li>
-          <li>Communication</li>
-          <li>Adaptability</li>
-        </ul>
-      </div>
-    
-      <div class="skills-category">
-        <h4>Languages</h4>
-        <ul>
-          <li>English (B2)</li>
-          <li>Serbian (Native)</li>
-          <li>French (A2)</li>
+          <li>Git</li>
+          <li>GitHub</li>
+          <li>Responsive Design</li>
+          <li>UI Implementation</li>
         </ul>
       </div>
     </section>
-      
-   <!-- ====== Contact ====== -->
+
+    <!-- ====== CONTACT (FORM LEFT / INFO RIGHT) ====== -->
     <section class="contact" id="contact">
-      <h3>Contact</h3>
+      <h3><span class="text-accent">Contact</span></h3>
 
-      <div class="contact-icons">
-        <a href="mailto:emilijapejovic2000@gmail.com" class="contact-icon" title="Email">
-          <i class="fa-regular fa-envelope"></i>
-        </a>
+      <div class="contact-wrapper">
 
-        <a href="https://linkedin.com/in/emilija-pejovic/" target="_blank" class="contact-icon" title="LinkedIn">
-          <i class="fa-brands fa-linkedin-in"></i>
-        </a>
+        <!-- MOBILE: FORM -->
+        <button class="contact-toggle-btn" id="contactToggleBtn">
+          Get in touch
+        </button>
 
-        <a href="https://github.com/EmilijaPejovic" target="_blank" class="contact-icon" title="GitHub">
-          <i class="fa-brands fa-github"></i>
-        </a>
+        <!-- LEFT: FORM -->
+        <form
+          class="contact-form"
+          action="https://formspree.io/f/mkokowkr"
+          method="POST"
+        >
+
+          <!-- Email Subject -->
+          <input type="hidden" name="_subject" id="hiddenSubject" />
+
+          <!-- Without Captcha -->
+          <input type="hidden" name="_captcha" value="false" />
+
+          <!-- Email Format -->
+          <input type="hidden" name="_template" value="table" />
+
+          <input type="text" name="name" placeholder="Your name" required />
+          <input type="email" name="email" placeholder="Your email" required />
+          <input type="text" name="subject" placeholder="Subject" required />
+          <textarea
+            name="message"
+            rows="4"
+            placeholder="Your message"
+            required
+          ></textarea>
+          <div class="contact-form-actions">
+            <button type="submit" class="btn-cv" id="sendMessageBtn" disabled>
+              Send Message
+            </button>
+            <button type="button" class="btn-secondary contact-cancel-btn" id="cancelMessageBtn">
+              Cancel
+            </button>
+          </div>
+        </form>
+
+        <!-- RIGHT: CONTACT INFO -->
+        <div class="contact-info">
+          <h4 class="contact-info-title"><span class="text-accent-blue">Let’s connect</span></h4>
+
+          <p class="contact-location">
+            <i class="fa-solid fa-location-dot"></i>
+            Belgrade, Serbia
+          </p>
+
+          <p class="contact-info-text">
+            <span class="text-accent">Open for internships, junior roles, and collaboration opportunities.</span>
+          </p>
+
+          <div class="contact-icons">
+            <a href="mailto:emilijapejovic2000@gmail.com" class="contact-icon" aria-label="Email">
+              <i class="fa-regular fa-envelope"></i>
+            </a>
+
+            <a
+              href="https://linkedin.com/in/emilija-pejovic/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-icon"
+              aria-label="LinkedIn"
+            >
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+
+            <a
+              href="https://github.com/EmilijaPejovic"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-icon"
+              aria-label="GitHub"
+            >
+              <i class="fa-brands fa-github"></i>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -170,5 +310,11 @@
     <footer>
       <p>&copy; <span id="year"></span> Emilija Pejovic</p>
     </footer>
+
+    <!-- Back to top -->
+    <button id="backToTop" type="button" aria-label="Back to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
   </body>
 </html>
