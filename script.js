@@ -131,7 +131,7 @@ if (menuButton && nav) {
     }
   });
 
-  nav.querySelectorAll("a").forEach((link) => {
+  nav.querySelectorAll('a[href^="#"]').forEach((link) => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
 
