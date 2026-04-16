@@ -314,3 +314,41 @@ fadeEls.forEach((el) => {
   el.classList.add("fade-in");
   observer.observe(el);
 });
+
+// ====== Featured Toggle (Mobile) ======
+const featuredToggleBtn = document.getElementById("featuredToggleBtn");
+const featuredPoints = document.getElementById("featuredPoints");
+
+if (featuredToggleBtn && featuredPoints) {
+  featuredToggleBtn.addEventListener("click", () => {
+    featuredPoints.classList.toggle("show");
+
+    if (featuredPoints.classList.contains("show")) {
+      featuredToggleBtn.textContent = "Close";
+    } else {
+      featuredToggleBtn.textContent = "View details";
+    }
+  });
+}
+
+// ====== Hero Section View Projects Button - Scrtoll to to of the Selected Projects Section ======
+const heroProjectsBtn = document.querySelector('.hero a[href="#projects"]');
+
+if (heroProjectsBtn) {
+  heroProjectsBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const target = document.querySelector("#projects");
+    const header = document.querySelector("header");
+    const headerHeight = header ? header.offsetHeight : 0;
+
+    if (target) {
+      const targetTop = target.offsetTop - headerHeight;
+
+      window.scrollTo({
+        top: targetTop,
+        behavior: "smooth",
+      });
+    }
+  });
+}

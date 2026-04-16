@@ -512,6 +512,10 @@ nav a:hover {
   margin: 1.5rem 0;
 }
 
+.featured-toggle-btn {
+  display: none;
+}
+
 .featured-points {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -525,17 +529,18 @@ nav a:hover {
 .featured-points span {
   background: rgba(148, 163, 184, 0.07);
   color: var(--text-main);
-  padding: 0.8rem;
+  padding: 0.8rem 1rem;
   border-radius: 999px;
   border: 1px solid rgba(148, 163, 184, 0.14);
   font-size: 0.92rem;
   font-weight: 500;
   width: 100%;
   text-align: center;
-  align-items: center;     
-  justify-content: center;
-  min-height: 56px;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 82px;
+  height: 82px;
 }
 
 /* ====== BACKGROUND SECTION ====== */
@@ -1088,7 +1093,7 @@ footer {
 
   .hero {
     min-height: 100svh;
-    padding: 1.5rem 6%;
+    padding: 1rem 6% 0.8rem;
     justify-content: center;
   }
 
@@ -1100,14 +1105,14 @@ footer {
     max-width: 100%;
     font-size: 2rem;
     line-height: 1.08;
-    margin-top: 6rem;
+    margin-top: 5.5rem;
   }
 
   .hero-description {
     max-width: 100%;
     font-size: 0.98rem;
     line-height: 1.65;
-    margin: 1rem auto 1.1rem;
+    margin: 0 auto 1rem;
   }
 
   .hero-description br{
@@ -1126,6 +1131,7 @@ footer {
     justify-content: center;
     gap: 0.7rem;
     flex-wrap: nowrap;
+    margin-top: 1.2rem;
   }
 
   .btn-cv,
@@ -1144,8 +1150,27 @@ footer {
     font-size: 1.7rem;
   }
 
+  .featured-toggle-btn {
+    display: block;
+    width: 100%;
+    margin-bottom: 1.2rem;
+    padding: 0.9rem;
+    border-radius: 999px;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    background: rgba(139, 92, 246, 0.08);
+    color: var(--accent);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
   .featured-points {
-    grid-template-columns: 1fr; 
+    display: none;
+  }
+
+  .featured-points.show {
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 0.5rem;
     margin: 1.2rem 0;
     padding-left: 0;
@@ -1282,6 +1307,7 @@ footer {
     max-width: 100%;
     font-size: 1.8rem;
     line-height: 1.06;
+    margin-top: 3.2rem;
   }
 
   .hero-description,
