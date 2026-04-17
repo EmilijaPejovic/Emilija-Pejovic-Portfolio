@@ -215,23 +215,17 @@ if (contactForm && sendMessageBtn && cancelMessageBtn) {
     )
   );
 
-  const initialValues = new Map(
-    formFields.map((field) => [field, field.value])
-  );
-
   let formActivated = false;
 
   const isFieldFilled = (field) => field.value.trim().length > 0;
 
   const areAllFieldsFilled = () => formFields.every(isFieldFilled);
 
-  const hasAnyInteractionOrText = () =>
-    formFields.some((field) => field.value.trim().length > 0) || formActivated;
+  const hasAnyText = () => formFields.some((field) => field.value.trim().length > 0);
 
   const resetFormState = () => {
     contactForm.reset();
 
-    // Return hidden subject if exists
     if (hiddenSubject) {
       hiddenSubject.value = "";
     }
@@ -242,12 +236,12 @@ if (contactForm && sendMessageBtn && cancelMessageBtn) {
   };
 
   const updateFormState = () => {
-    const anyTouched = hasAnyInteractionOrText();
+    const anyText = hasAnyText();
     const allFilled = areAllFieldsFilled();
 
     sendMessageBtn.disabled = !allFilled;
 
-    if (anyTouched) {
+    if (formActivated || anyText) {
       cancelMessageBtn.classList.add("show");
     } else {
       cancelMessageBtn.classList.remove("show");
@@ -271,8 +265,21 @@ if (contactForm && sendMessageBtn && cancelMessageBtn) {
   });
 
   document.addEventListener("click", (event) => {
-    if (!contactForm.contains(event.target) && hasAnyInteractionOrText()) {
-      resetFormState();
+    const clickedOutsideForm = !contactForm.contains(event.target);
+    const clickedToggleButton =
+      typeof contactToggleBtn !== "undefined" &&
+      contactToggleBtn &&
+      contactToggleBtn.contains(event.target);
+
+    if (clickedOutsideForm && !clickedToggleButton) {
+      const anyText = hasAnyText();
+
+      // If there is no entered text and the form was only activated by focus, 
+      // clicking outside returns it to the initial state.
+      if (formActivated && !anyText) {
+        formActivated = false;
+        updateFormState();
+      }
     }
   });
 
