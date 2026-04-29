@@ -27,6 +27,12 @@
   --radius-sm: 12px;
 
   --container: 1200px;
+
+  --header-height: 95px;
+  --hero-padding-y: 5.5rem;
+
+  --section-padding-y: 4.5rem;
+  --section-padding-x: 10%;
 }
 
 * {
@@ -42,12 +48,25 @@ html {
 
 body {
   background:
-    radial-gradient(circle at top left, rgba(56, 189, 248, 0.08), transparent 26%),
-    radial-gradient(circle at top right, rgba(139, 92, 246, 0.12), transparent 28%),
+    radial-gradient(
+      circle at top left,
+      rgba(56, 189, 248, 0.08),
+      transparent 26%
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(139, 92, 246, 0.12),
+      transparent 28%
+    ),
     linear-gradient(180deg, #0b1020 0%, #0f172a 100%);
   color: var(--text-main);
   line-height: 1.7;
   min-height: 100vh;
+}
+
+html,
+body {
+  overflow-x: hidden;
 }
 
 .text-accent {
@@ -64,7 +83,7 @@ body {
 
 /* ====== Shared Layout ====== */
 section {
-  padding: 4.5rem 10%;
+  padding: var(--section-padding-y) var(--section-padding-x);
   scroll-margin-top: 0;
   border-bottom: 2px solid rgba(148, 163, 184, 0.08);
 }
@@ -132,7 +151,9 @@ header img.profile-pic {
   border-radius: 50%;
   object-fit: cover;
   border: 1px solid rgba(148, 163, 184, 0.24);
-  transition: transform 0.25s ease, border-color 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
   cursor: pointer;
 }
 
@@ -194,12 +215,15 @@ nav a:hover {
 
 /* ====== Hero ====== */
 .hero {
-  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  padding: 11rem 10% 5.5rem;
+  padding-inline: var(--section-padding-x);
+  padding-top: calc(var(--hero-padding-y) + 4rem);
+  padding-bottom: var(--hero-padding-y);
+  margin-top: 0;
   position: relative;
 }
 
@@ -208,8 +232,16 @@ nav a:hover {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 50% 18%, rgba(139, 92, 246, 0.14), transparent 24%),
-    radial-gradient(circle at 70% 32%, rgba(56, 189, 248, 0.08), transparent 22%);
+    radial-gradient(
+      circle at 50% 18%,
+      rgba(139, 92, 246, 0.14),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 70% 32%,
+      rgba(56, 189, 248, 0.08),
+      transparent 22%
+    );
   pointer-events: none;
 }
 
@@ -303,7 +335,7 @@ nav a:hover {
 .btn-secondary {
   background: rgba(139, 92, 246, 0.08);
   color: #ffffff;
-  border: 1px solid rgba(99, 102, 241, 0.3); 
+  border: 1px solid rgba(99, 102, 241, 0.3);
   backdrop-filter: blur(12px);
 
   transform: none;
@@ -316,7 +348,7 @@ nav a:hover {
 
   background: rgba(139, 92, 246, 0.08);
   color: #ffffff;
-  border: 1px solid rgba(99, 102, 241, 0.3); 
+  border: 1px solid rgba(99, 102, 241, 0.3);
 }
 
 /* ====== Projects ====== */
@@ -363,7 +395,7 @@ nav a:hover {
   flex-direction: column;
   justify-content: flex-start;
 
-  transition: 
+  transition:
     transform 0.25s ease,
     border-color 0.25s ease,
     box-shadow 0.25s ease,
@@ -433,8 +465,11 @@ nav a:hover {
 .featured-card {
   max-width: 1020px;
   margin: 0 auto;
-  background:
-    linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(17, 24, 39, 0.88));
+  background: linear-gradient(
+    180deg,
+    rgba(15, 23, 42, 0.92),
+    rgba(17, 24, 39, 0.88)
+  );
   border: 1px solid rgba(167, 139, 250, 0.18);
   border-radius: 32px;
   padding: 3rem;
@@ -451,7 +486,11 @@ nav a:hover {
   right: -80px;
   width: 260px;
   height: 260px;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.24), transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(139, 92, 246, 0.24),
+    transparent 70%
+  );
   pointer-events: none;
 }
 
@@ -654,7 +693,6 @@ nav a:hover {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
-
 
 .about-card p {
   max-width: 760px;
@@ -884,7 +922,7 @@ nav a:hover {
   border-radius: 18px;
 
   background: linear-gradient(135deg, var(--accent), var(--accent-blue));
-  color:#ffffff;
+  color: #ffffff;
   transition:
     transform 0.25s ease,
     background-color 0.25s ease,
@@ -961,10 +999,81 @@ footer {
 }
 
 /* ====== Responsive ====== */
+@media (max-width: 1180px) {
+  :root {
+    --section-padding-y: 4.5rem;
+    --section-padding-x: 7%;
+    --hero-padding-y: 5.2rem;
+  }
+
+  .hero {
+    min-height: calc(100svh - var(--header-height));
+    padding: var(--hero-padding-y) var(--section-padding-x);
+    margin-top: var(--header-height);
+  }
+
+  .hero h1 {
+    margin-bottom: 1.9rem;
+  }
+
+  .hero-description {
+    margin: 1.2rem auto 1.9rem;
+  }
+
+  .hero-meta {
+    margin: 1.2rem auto 1.35rem;
+  }
+
+  .hero-actions {
+    margin-top: 2.25rem;
+  }
+
+  header {
+    padding: 1rem 7%;
+  }
+
+  .menu-toggle {
+    display: block;
+    right: 7%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  header nav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 82px;
+    right: 0;
+    width: 100%;
+    background: rgba(11, 16, 32, 0.96);
+    text-align: center;
+    border-top: 1px solid rgba(148, 163, 184, 0.12);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+    z-index: 1000;
+    padding: 0.5rem 0;
+    backdrop-filter: blur(16px);
+  }
+
+  header nav.active {
+    display: flex;
+    animation: fadeIn 0.25s ease;
+  }
+
+  header nav a {
+    display: block;
+    padding: 1rem;
+    margin-left: 0;
+    font-size: 0.96rem;
+  }
+}
+
 @media (max-width: 1024px) {
-  section {
-    padding: 5.5rem 7%;
-  } 
+  :root {
+    --section-padding-y: 4rem;
+    --section-padding-x: 7%;
+    --hero-padding-y: 5rem;
+  }
 
   .project-grid-featured {
     grid-template-columns: 1fr 1fr;
@@ -1024,8 +1133,10 @@ footer {
 }
 
 @media (max-width: 768px) {
-  section {
-    padding: 4.6rem 7%;
+  :root {
+    --section-padding-y: 3.5rem;
+    --section-padding-x: 7%;
+    --hero-padding-y: 3.6rem;
   }
 
   header {
@@ -1038,7 +1149,7 @@ footer {
 
   .header-left {
     flex: 1;
-    min-width: 0; 
+    min-width: 0;
     gap: 10px;
   }
 
@@ -1092,8 +1203,7 @@ footer {
   }
 
   .hero {
-    min-height: 100svh;
-    padding: 1rem 6% 0.8rem;
+    min-height: calc(100svh - var(--header-height));
     justify-content: center;
   }
 
@@ -1105,22 +1215,19 @@ footer {
     max-width: 100%;
     font-size: 2rem;
     line-height: 1.08;
-    margin-top: 5.5rem;
+    margin-top: 0;
+    margin-bottom: 1.55rem;
   }
 
   .hero-description {
     max-width: 100%;
     font-size: 0.98rem;
     line-height: 1.65;
-    margin: 0 auto 1rem;
-  }
-
-  .hero-description br{
-    display: none;
+    margin: 0 auto 1.55rem;
   }
 
   .hero-meta {
-    margin: 0 auto 1rem;
+    margin: 0.9rem auto 1.1rem;
     padding: 0.35rem 0.9rem;
     font-size: 0.8rem;
     border-radius: 999px;
@@ -1131,7 +1238,7 @@ footer {
     justify-content: center;
     gap: 0.7rem;
     flex-wrap: nowrap;
-    margin-top: 1.2rem;
+    margin-top: 1.6rem;
   }
 
   .btn-cv,
@@ -1142,7 +1249,7 @@ footer {
   }
 
   .featured-card {
-    padding: 1.6rem 1.2rem;
+    padding: 1.2rem 0.9rem;
     border-radius: 24px;
   }
 
@@ -1170,12 +1277,19 @@ footer {
 
   .featured-points.show {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
-    margin: 1.2rem 0;
-    padding-left: 0;
-    padding-right: 0;
-    justify-content: center;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.45rem;
+    margin: 0.6rem 0 0;
+    padding: 0;
+  }
+
+  .featured-points.show span {
+    min-height: 34px;
+    height: auto;
+    padding: 0.35rem 0.55rem;
+    border-radius: 14px;
+    font-size: 0.72rem;
+    line-height: 1.25;
   }
 
   .featured-points span {
@@ -1290,39 +1404,48 @@ footer {
   }
 
   #backToTop {
-    display:none;
+    display: none;
   }
 }
 
 @media (max-width: 480px) {
-  section {
-    padding: 1.3rem 6%;
+  :root {
+    --section-padding-y: 3rem;
+    --section-padding-x: 6%;
+    --hero-padding-y: 2.4rem;
+    --header-height: 88px;
   }
 
   .hero {
-    padding: 1.3rem 6%;
+    min-height: calc(100svh - var(--header-height));
+    padding: var(--hero-padding-y) var(--section-padding-x);
+    margin-top: var(--header-height);
   }
 
   .hero h1 {
-    max-width: 100%;
-    font-size: 1.8rem;
-    line-height: 1.06;
-    margin-top: 3.2rem;
+    font-size: 1.65rem;
+    line-height: 1.08;
+    margin-bottom: 1.15rem;
   }
 
-  .hero-description,
-  .section-intro,
-  .about p,
-  .contact-info-text,
-  .featured-card p {
-    font-size: 0.96rem;
-    line-height: 2;
+  .hero-description {
+    font-size: 0.9rem;
+    line-height: 1.75;
+    margin: 0 auto 1.15rem;
   }
 
-  .hero-meta,
-  .hero-note,
-  .featured-impact {
-    font-size: 0.87rem;
+  .hero-meta {
+    margin: 0.85rem auto 1.05rem;
+  }
+
+  .hero-actions {
+    margin-top: 1.4rem;
+  }
+
+  .hero-actions .btn-cv,
+  .hero-actions .btn-secondary {
+    width: 100%;
+    max-width: 280px;
   }
 
   section h3 {
@@ -1386,5 +1509,68 @@ footer {
   .contact-form input,
   .contact-form textarea {
     border-radius: 16px;
+  }
+}
+
+@media (max-width: 380px) {
+  :root {
+    --hero-padding-y: 1rem;
+    --header-height: 96px;
+  }
+
+  .hero {
+    justify-content: space-evenly;
+    padding: var(--hero-padding-y) var(--section-padding-x);
+  }
+
+  .hero h1 {
+    font-size: 1.45rem;
+    margin-bottom: 0;
+  }
+
+  .hero-description {
+    font-size: 0.84rem;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .hero-meta {
+    margin: 0 auto;
+  }
+
+  .hero-actions {
+    margin-top: 0;
+  }
+
+  header h1 {
+    font-size: 0.82rem;
+  }
+
+  .header-role {
+    font-size: 0.68rem;
+  }
+
+  header img.profile-pic {
+    width: 48px;
+    height: 48px;
+  }
+
+  .menu-toggle {
+    top: 18px;
+    right: 18px;
+    font-size: 1.45rem;
+  }
+
+  .btn-cv,
+  .btn-secondary {
+    min-width: 0;
+  }
+
+  .featured-points.show {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form-actions {
+    flex-direction: column;
   }
 }

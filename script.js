@@ -8,14 +8,14 @@ window.scrollTo(0, 0);
 // ====== Projects Data ======
 const projects = [
   {
-    title: "Eagle Shop",
-    badge: "E-commerce Frontend",
+    title: "Intuicija Vino",
+    badge: "Live Website",
     description:
-      "A premium e-commerce frontend focused on structured product presentation, responsive behavior, and a clean shopping experience.",
+      "A live, responsive website for a wine brand, built in collaboration with a professional graphic & visual designer.",
     details:
-      "<span class='text-accent-blue'>Built with scalable frontend architecture, reusable UI patterns, and cart and checkout flows, with preparation for future backend and API integration.</span>",
-    link: "",
-    linkLabel: "",
+      "<span class='text-accent-blue'>Built with JavaScript, HTML5, and CSS3, focusing on clean visual presentation, usability, and a polished user experience.</span>",
+    link: "https://intuicijavino.rs/",
+    linkLabel: "View Live Site",
   },
   {
     title: "Zenlorien",
@@ -33,7 +33,7 @@ const projects = [
     description:
       "A travel agency website focused on browsing destinations, seasonal offers, and trip categories.",
     details:
-      "<span class='text-accent-blue'>Built with Angular, HTML5, CSS3, and TypeScript, with emphasis on component-based structure and responsive layout.</span>",
+      "<span class='text-accent-blue'>Built with TypeScript, Angular, HTML5, and CSS3, with emphasis on component-based structure and responsive layout.</span>",
     link: "",
     linkLabel: "",
   },
@@ -43,7 +43,7 @@ const projects = [
     description:
       "A travel website designed to organize vacation packages and city trips with clear navigation and structure.",
     details:
-      "<span class='text-accent-blue'>Built with Angular, HTML5, CSS3, and TypeScript, focusing on maintainable frontend architecture and usability.</span>",
+      "<span class='text-accent-blue'>Built with TypeScript, Angular, HTML5, and, CSS3, focusing on maintainable frontend architecture and usability.</span>",
     link: "",
     linkLabel: "",
   },
@@ -53,7 +53,7 @@ const projects = [
     description:
       "A bakery website focused on clean layout and approachable product presentation.",
     details:
-      "<span class='text-accent-blue'>Built with HTML5, CSS3, JavaScript, and jQuery, with emphasis on usability and visual consistency.</span>",
+      "<span class='text-accent-blue'>Built with JavaScript, HTML5, CSS3, and jQuery, with emphasis on usability and visual consistency.</span>",
     link: "",
     linkLabel: "",
   },
@@ -122,12 +122,46 @@ const nav = document.getElementById("navMenu");
 if (menuButton && nav) {
   const icon = menuButton.querySelector("i");
 
-  menuButton.addEventListener("click", () => {
-    nav.classList.toggle("active");
+  const closeMenu = () => {
+    nav.classList.remove("active");
+    menuButton.setAttribute("aria-expanded", "false");
 
     if (icon) {
-      icon.classList.toggle("fa-bars");
-      icon.classList.toggle("fa-xmark");
+      icon.classList.add("fa-bars");
+      icon.classList.remove("fa-xmark");
+    }
+  };
+
+  const openMenu = () => {
+    nav.classList.add("active");
+    menuButton.setAttribute("aria-expanded", "true");
+
+    if (icon) {
+      icon.classList.remove("fa-bars");
+      icon.classList.add("fa-xmark");
+    }
+  };
+
+  menuButton.setAttribute("aria-expanded", "false");
+
+  menuButton.addEventListener("click", () => {
+    if (nav.classList.contains("active")) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    const clickedInsideMenu = nav.contains(event.target);
+    const clickedHamburger = menuButton.contains(event.target);
+
+    if (
+      nav.classList.contains("active") &&
+      !clickedInsideMenu &&
+      !clickedHamburger
+    ) {
+      closeMenu();
     }
   });
 
@@ -149,12 +183,7 @@ if (menuButton && nav) {
         });
       }
 
-      nav.classList.remove("active");
-
-      if (icon) {
-        icon.classList.add("fa-bars");
-        icon.classList.remove("fa-xmark");
-      }
+      closeMenu();
     });
   });
 }
@@ -211,8 +240,8 @@ const cancelMessageBtn = document.getElementById("cancelMessageBtn");
 if (contactForm && sendMessageBtn && cancelMessageBtn) {
   const formFields = Array.from(
     contactForm.querySelectorAll(
-      'input[type="text"], input[type="email"], textarea'
-    )
+      'input[type="text"], input[type="email"], textarea',
+    ),
   );
 
   let formActivated = false;
@@ -221,7 +250,8 @@ if (contactForm && sendMessageBtn && cancelMessageBtn) {
 
   const areAllFieldsFilled = () => formFields.every(isFieldFilled);
 
-  const hasAnyText = () => formFields.some((field) => field.value.trim().length > 0);
+  const hasAnyText = () =>
+    formFields.some((field) => field.value.trim().length > 0);
 
   const resetFormState = () => {
     contactForm.reset();
@@ -274,7 +304,7 @@ if (contactForm && sendMessageBtn && cancelMessageBtn) {
     if (clickedOutsideForm && !clickedToggleButton) {
       const anyText = hasAnyText();
 
-      // If there is no entered text and the form was only activated by focus, 
+      // If there is no entered text and the form was only activated by focus,
       // clicking outside returns it to the initial state.
       if (formActivated && !anyText) {
         formActivated = false;
