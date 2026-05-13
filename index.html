@@ -315,13 +315,32 @@
           <!-- Email Format -->
           <input type="hidden" name="_template" value="table" />
 
-          <input type="text" name="name" placeholder="Your name" required />
-          <input type="email" name="email" placeholder="Your email" required />
-          <input type="text" name="subject" placeholder="Subject" required />
+          <input
+            type="text"
+            name="name"
+            autocomplete="name"
+            placeholder="Your name"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            autocomplete="email"
+            placeholder="Your email"
+            required
+          />
+          <input
+            type="text"
+            name="subject"
+            placeholder="Subject"
+            autocomplete="off"
+            required
+          />
           <textarea
             name="message"
             rows="4"
             placeholder="Your message"
+            autocomplete="off"
             required
           ></textarea>
           <div class="contact-form-actions">
