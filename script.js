@@ -245,6 +245,7 @@ if (contactForm && sendMessageBtn && cancelMessageBtn) {
   );
 
   let formActivated = false;
+  let emailErrorVisible = false;
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -292,14 +293,23 @@ if (contactForm && sendMessageBtn && cancelMessageBtn) {
       return;
     }
 
+    if (showError) {
+      emailErrorVisible = true;
+    }
+
     const hasEmailText = emailInput.value.trim().length > 0;
     const emailIsInvalid = hasEmailText && !isEmailValid();
-    const shouldShowError = showError && emailIsInvalid;
 
-    emailInput.classList.toggle("email-invalid", shouldShowError);
-    emailInput.setCustomValidity(
-      emailIsInvalid ? "Please enter a valid email address." : "",
+    if (!emailIsInvalid) {
+      emailErrorVisible = false;
+    }
+
+    emailInput.classList.toggle(
+      "email-invalid",
+      emailErrorVisible && emailIsInvalid,
     );
+
+    emailInput.setCustomValidity("");
   };
 
   const isFieldFilled = (field) => field.value.trim().length > 0;
@@ -358,6 +368,7 @@ if (contactForm && sendMessageBtn && cancelMessageBtn) {
     }
 
     if (emailInput) {
+      emailErrorVisible = false;
       emailInput.classList.remove("email-invalid");
       emailInput.setCustomValidity("");
     }
@@ -386,7 +397,7 @@ if (contactForm && sendMessageBtn && cancelMessageBtn) {
     });
 
     emailInput.addEventListener("focus", () => {
-      emailInput.classList.remove("email-invalid");
+      updateEmailState(false);
     });
   }
 
@@ -443,7 +454,6 @@ if (contactForm && sendMessageBtn && cancelMessageBtn) {
     if (!isEmailValid()) {
       event.preventDefault();
       updateEmailState(true);
-      emailInput.reportValidity();
       return;
     }
 
