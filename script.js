@@ -253,16 +253,24 @@ if (contactForm && sendMessageBtn && cancelMessageBtn) {
   const titleInput = subjectInput;
   const messageInput = contactForm.querySelector('textarea[name="message"]');
 
+  const letterPattern = "A-Za-zÀ-ÖØ-öø-ÿĀ-žЀ-ӿ";
+
   const capitalizeFirstLetter = (value) => {
-    return value.replace(/^(\s*)(\p{L})/u, (match, spaces, letter) => {
-      return spaces + letter.toLocaleUpperCase("sr-RS");
-    });
+    return value.replace(
+      new RegExp(`^(\\s*)([${letterPattern}])`),
+      (match, spaces, letter) => {
+        return spaces + letter.toLocaleUpperCase("sr-RS");
+      },
+    );
   };
 
   const capitalizeName = (value) => {
-    return value.replace(/(^|[\s-])(\p{L})/gu, (match, separator, letter) => {
-      return separator + letter.toLocaleUpperCase("sr-RS");
-    });
+    return value.replace(
+      new RegExp(`(^|[\\s-])([${letterPattern}])`, "g"),
+      (match, separator, letter) => {
+        return separator + letter.toLocaleUpperCase("sr-RS");
+      },
+    );
   };
 
   const applyFormattedValue = (field, formatter) => {
@@ -313,10 +321,12 @@ if (contactForm && sendMessageBtn && cancelMessageBtn) {
 
     const draft = JSON.parse(savedDraft);
 
-    if (nameInput) nameInput.value = draft.name || "";
+    if (nameInput) nameInput.value = capitalizeName(draft.name || "");
     if (emailInput) emailInput.value = draft.email || "";
-    if (titleInput) titleInput.value = draft.subject || "";
-    if (messageInput) messageInput.value = draft.message || "";
+    if (titleInput)
+      titleInput.value = capitalizeFirstLetter(draft.subject || "");
+    if (messageInput)
+      messageInput.value = capitalizeFirstLetter(draft.message || "");
 
     formActivated = hasAnyText();
 
