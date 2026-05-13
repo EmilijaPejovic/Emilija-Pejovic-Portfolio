@@ -397,7 +397,8 @@ if (contactForm && sendMessageBtn && cancelMessageBtn) {
     });
 
     emailInput.addEventListener("focus", () => {
-      updateEmailState(false);
+      emailInput.classList.remove("email-invalid");
+      emailInput.setCustomValidity("");
     });
   }
 
