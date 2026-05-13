@@ -287,6 +287,20 @@ if (contactForm && sendMessageBtn && cancelMessageBtn) {
     return emailInput && emailRegex.test(emailInput.value.trim());
   };
 
+  const updateEmailState = () => {
+    if (!emailInput) {
+      return;
+    }
+
+    const hasEmailText = emailInput.value.trim().length > 0;
+    const emailIsInvalid = hasEmailText && !isEmailValid();
+
+    emailInput.classList.toggle("email-invalid", emailIsInvalid);
+    emailInput.setCustomValidity(
+      emailIsInvalid ? "Please enter a valid email address." : "",
+    );
+  };
+
   const isFieldFilled = (field) => field.value.trim().length > 0;
 
   const areAllFieldsFilled = () =>
@@ -330,14 +344,7 @@ if (contactForm && sendMessageBtn && cancelMessageBtn) {
 
     formActivated = hasAnyText();
 
-    if (emailInput) {
-      emailInput.setCustomValidity(
-        emailInput.value && !isEmailValid()
-          ? "Please enter a valid email address."
-          : "",
-      );
-    }
-
+    updateEmailState();
     updateFormState();
   };
 
@@ -347,6 +354,11 @@ if (contactForm && sendMessageBtn && cancelMessageBtn) {
 
     if (hiddenSubject) {
       hiddenSubject.value = "";
+    }
+
+    if (emailInput) {
+      emailInput.classList.remove("email-invalid");
+      emailInput.setCustomValidity("");
     }
 
     formActivated = false;
@@ -385,11 +397,7 @@ if (contactForm && sendMessageBtn && cancelMessageBtn) {
       }
 
       if (field === emailInput) {
-        if (!isEmailValid()) {
-          field.setCustomValidity("Please enter a valid email address.");
-        } else {
-          field.setCustomValidity("");
-        }
+        updateEmailState();
       }
 
       saveFormDraft();
