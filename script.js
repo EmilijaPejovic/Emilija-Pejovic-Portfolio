@@ -505,3 +505,59 @@ if (heroProjectsBtn) {
     }
   });
 }
+
+// ====== Contact Form Auto Capitalization Fallback ======
+document.addEventListener("DOMContentLoaded", () => {
+  const contactForm = document.querySelector(".contact-form");
+
+  if (!contactForm) {
+    return;
+  }
+
+  const nameInput = contactForm.querySelector('input[name="name"]');
+  const subjectInput = contactForm.querySelector('input[name="subject"]');
+  const messageInput = contactForm.querySelector('textarea[name="message"]');
+
+  const letterPattern = "A-Za-zÀ-ÖØ-öø-ÿĀ-žЀ-ӿ";
+
+  const capitalizeFirstLetter = (value) => {
+    return value.replace(
+      new RegExp(`^(\\s*)([${letterPattern}])`),
+      (match, spaces, letter) => spaces + letter.toLocaleUpperCase("sr-RS"),
+    );
+  };
+
+  const capitalizeName = (value) => {
+    return value.replace(
+      new RegExp(`(^|[\\s-])([${letterPattern}])`, "g"),
+      (match, separator, letter) =>
+        separator + letter.toLocaleUpperCase("sr-RS"),
+    );
+  };
+
+  const formatField = (field, formatter) => {
+    if (!field) {
+      return;
+    }
+
+    const cursorPosition = field.selectionStart;
+    const formattedValue = formatter(field.value);
+
+    if (field.value !== formattedValue) {
+      field.value = formattedValue;
+      field.setSelectionRange(cursorPosition, cursorPosition);
+    }
+  };
+
+  nameInput?.addEventListener("input", () => {
+    formatField(nameInput, capitalizeName);
+  });
+
+  subjectInput?.addEventListener("input", () => {
+    formatField(subjectInput, capitalizeFirstLetter);
+  });
+
+  messageInput?.addEventListener("input", () => {
+    formatField(messageInput, capitalizeFirstLetter);
+  });
+});
