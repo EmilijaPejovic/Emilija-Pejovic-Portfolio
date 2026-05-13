@@ -293,12 +293,24 @@
           class="contact-form"
           action="https://formspree.io/f/mkokowkr"
           method="POST"
+          accept-charset="UTF-8"
         >
           <!-- Email Subject -->
           <input type="hidden" name="_subject" id="hiddenSubject" />
 
-          <!-- Without Captcha -->
-          <input type="hidden" name="_captcha" value="false" />
+          <!-- Anti-spam -->
+          <input type="hidden" name="_language" value="sr" />
+
+          <div class="honeypot" aria-hidden="true">
+            <label for="website">Website</label>
+            <input
+              type="text"
+              id="website"
+              name="_gotcha"
+              tabindex="-1"
+              autocomplete="off"
+            />
+          </div>
 
           <!-- Email Format -->
           <input type="hidden" name="_template" value="table" />

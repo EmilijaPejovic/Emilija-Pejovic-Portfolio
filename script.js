@@ -240,21 +240,100 @@ const cancelMessageBtn = document.getElementById("cancelMessageBtn");
 if (contactForm && sendMessageBtn && cancelMessageBtn) {
   const formFields = Array.from(
     contactForm.querySelectorAll(
-      'input[type="text"], input[type="email"], textarea',
+      'input[type="text"]:not([name="_gotcha"]), input[type="email"], textarea',
     ),
   );
 
   let formActivated = false;
 
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  const nameInput = contactForm.querySelector('input[name="name"]');
+  const emailInput = contactForm.querySelector('input[name="email"]');
+  const titleInput = subjectInput;
+  const messageInput = contactForm.querySelector('textarea[name="message"]');
+
+  const capitalizeFirstLetter = (value) => {
+    return value.replace(/^(\s*)(\p{L})/u, (match, spaces, letter) => {
+      return spaces + letter.toLocaleUpperCase("sr-RS");
+    });
+  };
+
+  const capitalizeName = (value) => {
+    return value.replace(/(^|[\s-])(\p{L})/gu, (match, separator, letter) => {
+      return separator + letter.toLocaleUpperCase("sr-RS");
+    });
+  };
+
+  const applyFormattedValue = (field, formatter) => {
+    const cursorPosition = field.selectionStart;
+    const formattedValue = formatter(field.value);
+
+    if (field.value !== formattedValue) {
+      field.value = formattedValue;
+      field.setSelectionRange(cursorPosition, cursorPosition);
+    }
+  };
+
+  const isEmailValid = () => {
+    return emailInput && emailRegex.test(emailInput.value.trim());
+  };
+
   const isFieldFilled = (field) => field.value.trim().length > 0;
 
-  const areAllFieldsFilled = () => formFields.every(isFieldFilled);
+  const areAllFieldsFilled = () =>
+    formFields.every(isFieldFilled) && isEmailValid();
 
   const hasAnyText = () =>
     formFields.some((field) => field.value.trim().length > 0);
 
+  const draftStorageKey = "portfolioContactFormDraft";
+
+  const saveFormDraft = () => {
+    const draft = {
+      name: nameInput?.value || "",
+      email: emailInput?.value || "",
+      subject: titleInput?.value || "",
+      message: messageInput?.value || "",
+    };
+
+    sessionStorage.setItem(draftStorageKey, JSON.stringify(draft));
+  };
+
+  const clearFormDraft = () => {
+    sessionStorage.removeItem(draftStorageKey);
+  };
+
+  const restoreFormDraft = () => {
+    const savedDraft = sessionStorage.getItem(draftStorageKey);
+
+    if (!savedDraft) {
+      return;
+    }
+
+    const draft = JSON.parse(savedDraft);
+
+    if (nameInput) nameInput.value = draft.name || "";
+    if (emailInput) emailInput.value = draft.email || "";
+    if (titleInput) titleInput.value = draft.subject || "";
+    if (messageInput) messageInput.value = draft.message || "";
+
+    formActivated = hasAnyText();
+
+    if (emailInput) {
+      emailInput.setCustomValidity(
+        emailInput.value && !isEmailValid()
+          ? "Please enter a valid email address."
+          : "",
+      );
+    }
+
+    updateFormState();
+  };
+
   const resetFormState = () => {
     contactForm.reset();
+    clearFormDraft();
 
     if (hiddenSubject) {
       hiddenSubject.value = "";
@@ -286,6 +365,24 @@ if (contactForm && sendMessageBtn && cancelMessageBtn) {
 
     field.addEventListener("input", () => {
       formActivated = true;
+
+      if (field === nameInput) {
+        applyFormattedValue(field, capitalizeName);
+      }
+
+      if (field === titleInput || field === messageInput) {
+        applyFormattedValue(field, capitalizeFirstLetter);
+      }
+
+      if (field === emailInput) {
+        if (!isEmailValid()) {
+          field.setCustomValidity("Please enter a valid email address.");
+        } else {
+          field.setCustomValidity("");
+        }
+      }
+
+      saveFormDraft();
       updateFormState();
     });
   });
@@ -313,10 +410,19 @@ if (contactForm && sendMessageBtn && cancelMessageBtn) {
     }
   });
 
-  contactForm.addEventListener("submit", () => {
+  contactForm.addEventListener("submit", (event) => {
+    if (!isEmailValid()) {
+      event.preventDefault();
+      emailInput.setCustomValidity("Please enter a valid email address.");
+      emailInput.reportValidity();
+      return;
+    }
+
+    clearFormDraft();
     sendMessageBtn.disabled = true;
   });
 
+  restoreFormDraft();
   updateFormState();
 }
 
